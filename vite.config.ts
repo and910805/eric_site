@@ -1,11 +1,8 @@
+// vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
-    host: true,       // 允許外部 IP 存取
-    port: 5173        // 或改成你想開的 port
-  }
+  base: '/eric_site/', // ← 這行一定要有，斜線開頭、Repo 名結尾
 })
