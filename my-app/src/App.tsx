@@ -1,7 +1,6 @@
-// src/App.tsx
 import { Routes, Route, Link } from "react-router-dom";
-import ProjectPage from "./pages/Home"; // GitHub 專案頁（Home.tsx）
-import IndexPage from "./pages/Index"; // 如果未來想保留，可以留著
+import ProjectPage from "./pages/Home";   // GitHub 專案頁
+import IndexPage from "./pages/Index";    // 個人簡介頁
 
 function App() {
   return (
@@ -12,11 +11,11 @@ function App() {
       </nav>
 
       <Routes>
-        {/* 將首頁直接設為 ProjectPage */}
-        <Route path="/" element={<ProjectPage />} />
+        {/* ✅ 設定首頁顯示 IndexPage */}
+        <Route path="/" element={<IndexPage />} />
 
-        {/* 若還想保留原本首頁可另外給個路由 */}
-        <Route path="/intro" element={<IndexPage />} />
+        {/* ✅ /projects 顯示專案 */}
+        <Route path="/projects" element={<ProjectPage />} />
       </Routes>
     </>
   );
