@@ -2,11 +2,11 @@ name: DevSecOps Scan
 
 on:
   push:
-    branches: [ main, master ,mainer]   # mainer 看起來像是手誤，先拿掉
+    branches: [ master ]     # 你是 master 分支
   pull_request:
-    branches: [ main, master,mainer ]
+    branches: [ master ]
   schedule:
-    - cron: "0 2 * * *"          # 每天 10:00 台灣時間（UTC+8）
+    - cron: "0 2 * * *"      # 每天 10:00 台灣時間（UTC+8）
 
 jobs:
   security-scan:
@@ -16,24 +16,25 @@ jobs:
       security-events: write
 
     container:
-      image: semgrep/semgrep:latest  # 官方建議直接用這個 image 跑 CLI
+      image: semgrep/semgrep:latest
 
     steps:
       - uses: actions/checkout@v4
 
-      # 方案A：不綁 Semgrep 平台帳號，直接用公開規則掃描並產出 SARIF
-      - name: Run Semgrep scan (CE rules)
-        run: |
-          semgrep scan \
-            --config p/owasp-top-ten \
-            --config p/javascript \
-            --config p/typescript \
-            --config p/secrets \
-            --max-target-bytes 0 \        # 取消 1MB 檔案上限，避免被跳過
-            --sarif --output semgrep.sarif
+      - name: Run Semgrep scan
+        working-directory: ./my-app           # ⬅ 指定程式碼所在資料夾
+        run: >
+          semgrep scan
+          --config p/owasp-top-ten
+          --config p/javascript
+          --config p/typescript
+          --config p/secrets
+          --max-target-bytes 0
+          --sarif --output semgrep.sarif
+          .
 
       - name: Upload SARIF to GitHub
         uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
-          sarif_file: semgrep.sarif
+          sarif_file: my-app/semgrep.sarif    # ⬅ 路徑要對應 working-directory
