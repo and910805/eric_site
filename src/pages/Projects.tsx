@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import Navbar from "../components/Navbar";
 
 // 定義 Repo 的型別
 interface Repo {
@@ -12,7 +12,7 @@ interface Repo {
   fork: boolean;
 }
 
-export default function Home() {
+export default function Projects() {
   const [repos, setRepos] = useState<Repo[]>([]);
 
   useEffect(() => {
@@ -35,20 +35,15 @@ export default function Home() {
       <header className="py-12 text-center">
         <h1 className="text-5xl font-extrabold mb-2 drop-shadow-lg">莊冠霖</h1>
         <p className="text-lg">資安筆記、GitHub 專案展示</p>
-        <nav className="mt-4 space-x-6 text-sm">
-          <a href="#" className="hover:underline">
-            HOME
-          </a>
-          <a href="#" className="hover:underline">
-            BLOG
-          </a>
-          <a href="#" className="hover:underline">
-            PROJECTS
-          </a>
-          <a href="#" className="hover:underline">
-            CONTACT
-          </a>
-        </nav>
+        <Navbar
+          items={[
+            { label: "HOME", href: "#" },
+            { label: "BLOG", href: "#" },
+            { label: "PROJECTS", href: "#" },
+            { label: "CONTACT", href: "#" },
+          ]}
+          className="mt-4 space-x-6 text-sm"
+        />
       </header>
 
       {/* Projects 區 */}
