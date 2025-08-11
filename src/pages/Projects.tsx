@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 // 定義 Repo 的型別
@@ -12,7 +13,7 @@ interface Repo {
   fork: boolean;
 }
 
-export default function Home() {
+export default function Projects() {
   const [repos, setRepos] = useState<Repo[]>([]);
 
   useEffect(() => {
@@ -36,18 +37,18 @@ export default function Home() {
         <h1 className="text-5xl font-extrabold mb-2 drop-shadow-lg">莊冠霖</h1>
         <p className="text-lg">資安筆記、GitHub 專案展示</p>
         <nav className="mt-4 space-x-6 text-sm">
-          <a href="#" className="hover:underline">
+          <Link to="/" className="hover:underline">
             HOME
-          </a>
-          <a href="#" className="hover:underline">
+          </Link>
+          <Link to="/blog" className="hover:underline">
             BLOG
-          </a>
-          <a href="#" className="hover:underline">
+          </Link>
+          <Link to="/projects" className="hover:underline">
             PROJECTS
-          </a>
-          <a href="#" className="hover:underline">
+          </Link>
+          <Link to="/contact" className="hover:underline">
             CONTACT
-          </a>
+          </Link>
         </nav>
       </header>
 
