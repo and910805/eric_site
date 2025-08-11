@@ -1,5 +1,7 @@
 import cehCertImg from '../assets/ceh-cert.png';
 import Footer from '../components/Footer';
+import SkillTree from '../components/SkillTree';
+import Timeline from '../components/Timeline';
 
 export default function Index() {
   return (
@@ -30,6 +32,11 @@ export default function Index() {
             </ul>
           </div>
         </section>
+        {/* 技能樹 */}
+        <SkillTree />
+
+        {/* 時間軸 */}
+        <Timeline />
 
         {/* 證照區塊 */}
         <section className="flex flex-col md:flex-row items-center gap-8 bg-slate-900/60 backdrop-blur-md rounded-xl p-8 shadow-lg">
