@@ -2,30 +2,37 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ mainer, main, master ]
+    # 可選：避免 gh-pages 分支觸發自己
+    # paths-ignore:
+    #   - 'dist/**'
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write   # 用 GITHUB_TOKEN 推到 gh-pages 需要 write
+      pages: write
+      id-token: write
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install deps
+        run: npm ci
 
-      - name: Build App 🔧
+      - name: Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages 🚀
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          # keep_files: true  # 可選：保留 gh-pages 既有檔案
