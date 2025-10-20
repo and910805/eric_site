@@ -1,11 +1,14 @@
 // src/pages/Index.tsx
+import { Link } from "react-router-dom";
 import cehCertImg from "../assets/ceh-cert.png";
 import Footer from "../components/Footer";
 import { SkillTree } from "../components/SkillTree";
 import { Timeline } from "../components/Timeline";
-import { skills, timeline } from "../data/profile";
+import { projects, skills, timeline } from "../data/profile";
 
 export default function Index() {
+  const projectHighlights = projects.slice(0, 4);
+
   return (
     <div className="min-h-screen bg-slate-950 text-white px-6 py-16">
       <div className="mx-auto max-w-5xl space-y-16">
@@ -111,6 +114,39 @@ export default function Index() {
 
         {/* Timeline */}
         <Timeline items={timeline} />
+
+        {/* Projects highlight */}
+        <section className="space-y-6 rounded-xl border border-slate-800 bg-slate-900/60 p-8 shadow-lg">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold">🛠️ GitHub Projects</h2>
+              <p className="text-slate-300">
+                精選部分常維護的專案，更多細節歡迎前往 Projects 頁面查看。
+              </p>
+            </div>
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-4 py-2 text-sm font-medium text-cyan-200 transition hover:bg-cyan-500/10"
+            >
+              查看全部專案
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {projectHighlights.map((project) => (
+              <article
+                key={project.name}
+                className="rounded-lg border border-slate-800/80 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/40"
+              >
+                <h3 className="text-lg font-semibold text-white">{project.name}</h3>
+                <p className="mt-2 inline-flex items-center rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-200">
+                  #{project.tag}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
 
         {/* 社群連結區塊 */}
         <section className="text-center space-y-4">

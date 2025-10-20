@@ -54,3 +54,21 @@ export const projects = [
   { name: "PTT 新聞爬蟲 + Discord Bot", tag: "Crawler/Bot" },
   { name: "Google 關鍵字 TF-IDF 分析", tag: "NLP" },
 ];
+
+export const contactLinks = [
+  {
+    label: "Email",
+    value: "goole910805@gmail.com",
+    href: "mailto:goole910805@gmail.com",
+  },
+  {
+    label: "GitHub",
+    value: "and910805",
+    href: "https://github.com/and910805",
+  },
+  {
+    label: "HackMD",
+    value: "資安筆記",
+    href: "https://hackmd.io/@LKanFpXQTUSJayug7EHeiA",
+  },
+];
