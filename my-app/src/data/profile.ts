@@ -16,12 +16,19 @@ export const skills = {
     { name: "VMware", level: 3 },
     { name: "Shell", level: 3 },
     { name: "Git/GitHub", level: 3 },
+    { name: "React", level: 3 },
   ],
   tags: ["Python", "PHP", "AI", "C++", "MySQL", "VMware", "Shell", "Linux"],
 };
 
 export const timeline = [
   // 你可以把日期寫得更精準，排序時會更穩
+  {
+    date: "2025-01",
+    displayDate: "2025~現在",
+    title: "台灣精材 資安專責人員",
+    type: "work",
+  },
   { date: "2023-2024", title: "勤業眾信 Cyber Detect and Response", type: "work" },
   { date: "2023-10", title: `TANET & NCS 論文：具意圖導向之 AI 輔助文案生成方法`, type: "paper",
     detail: `王忍成、莊冠霖、陳奕翔、黃致瑜、陳建智` },
