@@ -1,11 +1,14 @@
 // src/pages/Index.tsx
+import { Link } from "react-router-dom";
 import cehCertImg from "../assets/ceh-cert.png";
 import Footer from "../components/Footer";
 import { SkillTree } from "../components/SkillTree";
 import { Timeline } from "../components/Timeline";
-import { skills, timeline, projects } from "../data/profile";
+import { projects, skills, timeline } from "../data/profile";
 
 export default function Index() {
+  const featuredProjects = projects;
+
   return (
     <div className="min-h-screen bg-slate-950 text-white px-6 py-16">
       <div className="mx-auto max-w-5xl space-y-16">
@@ -73,6 +76,21 @@ export default function Index() {
           </div>
         </section>
 
+        {/* IT 鐵人賽 宣傳 */}
+        <section className="rounded-xl border border-cyan-500/40 bg-cyan-500/10 p-6 text-center shadow-lg">
+          <p className="text-lg leading-relaxed">
+            最近開起來IT鐵人賽，歡迎來看我的文章{" "}
+            <a
+              href="https://ithelp.ithome.com.tw/users/20171891/ironman/8352"
+              className="underline decoration-dotted underline-offset-4 hover:text-cyan-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://ithelp.ithome.com.tw/users/20171891/ironman/8352
+            </a>
+          </p>
+        </section>
+
         {/* 證照區塊 */}
         <section className="flex flex-col md:flex-row items-center gap-8 bg-slate-900/60 backdrop-blur-md rounded-xl p-8 shadow-lg">
           <div className="flex-1 space-y-4">
@@ -97,20 +115,42 @@ export default function Index() {
         {/* Timeline */}
         <Timeline items={timeline} />
 
-        {/* Projects 區塊 */}
-        <section className="space-y-4">
-          <h2 className="text-2xl font-bold">🧩 作品集 (GitHub)</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {projects.map((p) => (
-              <div
-                key={p.name}
-                className="rounded-xl border border-slate-700/60 bg-slate-900/60 p-4"
-              >
-                <div className="mb-2 text-lg font-semibold">{p.name}</div>
-                <span className="rounded-full border border-slate-600 px-2 py-0.5 text-xs text-slate-300">
-                  {p.tag}
+        {/* Featured Projects */}
+        <section className="space-y-6 rounded-xl border border-slate-800 bg-slate-900/60 p-8 shadow-lg">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold">🌟 Featured Projects</h2>
+              <p className="text-slate-300 leading-relaxed">
+                <span className="block">
+                  Curated ongoing work that spans security experiments, AI
+                  applications, and automation tooling.
                 </span>
-              </div>
+                <span className="block">
+                  精選持續維護的作品集，涵蓋資安實驗、AI 應用與自動化腳本，更多
+                  細節歡迎前往 Projects 頁面查看。
+                </span>
+              </p>
+            </div>
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/60 px-4 py-2 text-sm font-medium text-cyan-200 transition hover:bg-cyan-500/10"
+            >
+              查看全部專案
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <article
+                key={project.name}
+                className="rounded-lg border border-slate-800/80 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/40 transition hover:border-cyan-400/70 hover:shadow-cyan-500/10"
+              >
+                <h3 className="text-lg font-semibold text-white">{project.name}</h3>
+                <p className="mt-3 inline-flex items-center rounded-full bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-wide text-cyan-200">
+                  #{project.tag}
+                </p>
+              </article>
             ))}
           </div>
         </section>

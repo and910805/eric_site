@@ -16,12 +16,19 @@ export const skills = {
     { name: "VMware", level: 3 },
     { name: "Shell", level: 3 },
     { name: "Git/GitHub", level: 3 },
+    { name: "React", level: 3 },
   ],
   tags: ["Python", "PHP", "AI", "C++", "MySQL", "VMware", "Shell", "Linux"],
 };
 
 export const timeline = [
   // 你可以把日期寫得更精準，排序時會更穩
+  {
+    date: "2025-01",
+    displayDate: "2025~現在",
+    title: "台灣精材 資安專責人員",
+    type: "work",
+  },
   { date: "2023-2024", title: "勤業眾信 Cyber Detect and Response", type: "work" },
   { date: "2023-10", title: `TANET & NCS 論文：具意圖導向之 AI 輔助文案生成方法`, type: "paper",
     detail: `王忍成、莊冠霖、陳奕翔、黃致瑜、陳建智` },
@@ -46,4 +53,22 @@ export const projects = [
   { name: "蝦皮自動簽到", tag: "Automation" },
   { name: "PTT 新聞爬蟲 + Discord Bot", tag: "Crawler/Bot" },
   { name: "Google 關鍵字 TF-IDF 分析", tag: "NLP" },
+];
+
+export const contactLinks = [
+  {
+    label: "Email",
+    value: "goole910805@gmail.com",
+    href: "mailto:goole910805@gmail.com",
+  },
+  {
+    label: "GitHub",
+    value: "and910805",
+    href: "https://github.com/and910805",
+  },
+  {
+    label: "HackMD",
+    value: "資安筆記",
+    href: "https://hackmd.io/@LKanFpXQTUSJayug7EHeiA",
+  },
 ];
