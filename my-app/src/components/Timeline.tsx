@@ -1,7 +1,13 @@
 // src/components/Timeline.tsx
 import React from "react";
 
-type Item = { date: string; title: string; type?: string; detail?: string };
+type Item = {
+  date: string;
+  title: string;
+  type?: string;
+  detail?: string;
+  displayDate?: string;
+};
 
 const colorByType = (type?: string) => {
   switch (type) {
@@ -40,7 +46,9 @@ export const Timeline: React.FC<{ items: Item[] }> = ({ items }) => {
                 it.type
               )}`}
             />
-            <time className="text-sm text-slate-400">{it.date}</time>
+            <time className="text-sm text-slate-400">
+              {it.displayDate ?? it.date}
+            </time>
             <h3 className="text-lg font-semibold">{it.title}</h3>
             {it.detail && (
               <p className="text-sm text-slate-300/90">{it.detail}</p>
