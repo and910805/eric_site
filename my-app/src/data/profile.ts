@@ -44,15 +44,38 @@ export const timeline = [
 ];
 
 export const projects = [
-  { name: "ATT&CK APT29（模擬攻擊）", tag: "Security" },
-  { name: "AI 攻擊手法研究與工具整合（ART）", tag: "AI/Sec" },
-  { name: "Python RAT", tag: "Security" },
-  { name: "系上面試網站（PHP）", tag: "Web/PHP" },
-  { name: "Linux 各種 server 部署", tag: "DevOps" },
-  { name: "Blog（PHP）", tag: "Web/PHP" },
-  { name: "蝦皮自動簽到", tag: "Automation" },
-  { name: "PTT 新聞爬蟲 + Discord Bot", tag: "Crawler/Bot" },
-  { name: "Google 關鍵字 TF-IDF 分析", tag: "NLP" },
+  {
+    icon: "🍽️",
+    name: "食物轉盤",
+    nameEn: "Food Wheel",
+    description: "🎡 不知道吃什麼？轉一下！",
+    descriptionEn: "🎡 Can't decide what to eat? Give it a spin!",
+    href: "https://and910805.github.io/food-wheel/",
+  },
+  {
+    icon: "🎲",
+    name: "猜數字遊戲",
+    nameEn: "Number Guessing Game",
+    description: "1 ~ 1000 的隨機數字，來挑戰看看！",
+    descriptionEn: "Take on a random number between 1 and 1000 and see how fast you can guess it!",
+    href: "https://and910805.github.io/Binary-Search-game/",
+  },
+  {
+    icon: "📝",
+    name: "Kuanlin Word Game",
+    nameEn: "Kuanlin Word Game",
+    description: "類似 Wordle 的小遊戲，挑戰每日單字！",
+    descriptionEn: "A Wordle-inspired daily puzzle that keeps your vocabulary sharp.",
+    href: "https://and910805.github.io/kuanlin-word-game/",
+  },
+  {
+    icon: "🌾",
+    name: "FarmGame",
+    nameEn: "FarmGame",
+    description: "農場經營遊戲，可以種植、養動物、建設農場！",
+    descriptionEn: "Manage crops, raise animals, and build out your dream digital homestead.",
+    href: "https://and910805.github.io/FarmGame/",
+  },
 ];
 
 export const contactLinks = [

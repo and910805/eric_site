@@ -140,16 +140,38 @@ export default function Index() {
             </Link>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
             {featuredProjects.map((project) => (
               <article
                 key={project.name}
-                className="rounded-lg border border-slate-800/80 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/40 transition hover:border-cyan-400/70 hover:shadow-cyan-500/10"
+                className="flex h-full flex-col justify-between rounded-xl border border-slate-800/80 bg-slate-950/60 p-6 shadow-lg shadow-slate-950/40 transition hover:border-cyan-400/70 hover:shadow-cyan-500/10"
               >
-                <h3 className="text-lg font-semibold text-white">{project.name}</h3>
-                <p className="mt-3 inline-flex items-center rounded-full bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-wide text-cyan-200">
-                  #{project.tag}
-                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-3xl" aria-hidden>
+                      {project.icon}
+                    </span>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white">
+                        {project.name}
+                      </h3>
+                      <p className="text-sm text-slate-400">{project.nameEn}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2 text-slate-200">
+                    <p>{project.description}</p>
+                    <p className="text-sm text-slate-400">{project.descriptionEn}</p>
+                  </div>
+                </div>
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/60 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-200 transition hover:bg-cyan-400/20"
+                  aria-label={`打開 ${project.name} 網站（Open ${project.nameEn}）`}
+                >
+                  🔍 打開網站 →
+                </a>
               </article>
             ))}
           </div>
